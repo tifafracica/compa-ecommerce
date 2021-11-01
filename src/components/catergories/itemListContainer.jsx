@@ -1,6 +1,6 @@
 import { Box } from "@mui/system";
 
-const Caterories = props => {
+const ItemListContainer = props => {
     return ( 
         
         <Box sx={{ justifyContent: 'center', textAlign: 'center'}}>
@@ -10,4 +10,4 @@ const Caterories = props => {
      );
   };
   
-  export default Caterories;
+  export default ItemListContainer;
