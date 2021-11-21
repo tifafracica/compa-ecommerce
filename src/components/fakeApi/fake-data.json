@@ -1,0 +1,74 @@
+[
+  {
+    "id": 0,
+    "productName": "Tequeños de Queso",
+    "description": "Docena de tequeños venezolanos congelados rellenos de queso llanero. listos para freír.",
+    "category": "Tequeños Crudos",
+    "pictureUrl": "https://www.cocinayvino.com/wp-content/uploads/2015/02/Tequenos-frenteG-e1481247629134.jpg",
+    "price": 350
+  },
+  {
+    "id": 1,
+    "productName": "Tequeños de Queso y Panceta",
+    "description": "Docena de tequeños venezolanos congelados rellenos de queso llanero y Panceta, listos para freír.",
+    "category": "Tequeños Crudos",
+    "pictureUrl": "https://i2.wp.com/biensabroso.com/wp-content/uploads/tequen%CC%83os-con-jamon-y-queso.jpg?fit=660%2C519&ssl=1",
+    "price": 350
+  },
+  {
+    "id": 2,
+    "productName": "Tequeños de Queso y Plátano maduro",
+    "description": "Docena de tequeños venezolanos congelados rellenos de queso llanero y plátano maduro, listos para freír.",
+    "category": "Tequeños Crudos",
+    "pictureUrl": "https://anubismultimedia.com/vas/wp-content/uploads/2020/12/Enjoy-Tequenos-QUESO-Y-PLATANO.jpg",
+    "price": 350
+  },
+  {
+    "id": 3,
+    "productName": "Tequeños de Queso",
+    "description": "Docena de tequeños venezolanos precocido rellenos de queso llanero, listos para freír o hornear.",
+    "category": "Tequeños Precocidos",
+    "pictureUrl": "https://www.cocinayvino.com/wp-content/uploads/2015/02/Tequenos-frenteG-e1481247629134.jpg",
+    "price": 380
+  },
+  {
+    "id": 4,
+    "productName": "Chiquibaby",
+    "description": "24 unid de tequeños baby rellenos de queso llanero, listos para freír.",
+    "category": "Tequeños Crudos",
+    "pictureUrl": "https://scontent.faep9-2.fna.fbcdn.net/v/t1.6435-9/121276026_3384941858266135_8718598833544063982_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=rUGQpPhd6tsAX9676XG&_nc_ht=scontent.faep9-2.fna&oh=153c5214d5279d642c8c02f88282fe4b&oe=61BFC6D7",
+    "price": 345
+  },
+  {
+    "id": 5,
+    "productName": "Tequeyoyos Zuliano",
+    "description": "5 unid de tequeyoyos rellenos de queso llanero, plátano maduro y jamón cocido, listos para freír.",
+    "category": "Tequeños Crudos",
+    "pictureUrl": "https://www.tequenoselzuliano.com/wp-content/uploads/2021/04/tequeyoyo6.jpeg",
+    "price": 380
+  },
+  {
+    "id": 6,
+    "productName": "Queso llanero",
+    "description": "1 kg de queso blanco llanero",
+    "category": "Quesos",
+    "pictureUrl": "https://www.yappa.shop/imagenes/productos/queso-llanero-costeno-kg-img.jpg",
+    "price": 550
+  },
+  {
+    "id": 7,
+    "productName": "Ron Diplomatico Reserva",
+    "description": "700ml de Ron Reserva Exclusiva es un elegante y complejo ron de degustación. La unión de un cuerpo único con un excelente balance, lo ha convertido en una referencia para los amantes y conocedores de ron en todo el mundo. Aromas deliciosos como la piel de naranja, jarabe de maple y regaliz pueden ser percibidos. En el paladar es dulce, con notas de caramelo de azúcar y un acabado atractivo y duradero.",
+    "category": "Rones Venezolanos",
+    "pictureUrl": "https://www.dellepianespirits.com/store/wp-content/uploads/2018/11/1685-diplomatico-reserva-2.jpg",
+    "price": 10000
+  },
+  {
+    "id": 8,
+    "productName": "Ron Cacique 500",
+    "description": "750ml de Ron que conmemora los 500 años del descubrimiento de América. Se caracteriza por ser un ron estructurado que exalta el olor de fruta madura, madera y vainilla. Es una selección de los mejores rones extra añejados en barricas de roble blanco. Su profundo color ámbar se refleja es su característica botella oscura. Perfecto para mezclarlo o tomarlo en las rocas.",
+    "category": "Rones Venezolanos",
+    "pictureUrl": "https://marianomadrueno.es/wp-content/uploads/2013/06/cacique-ron-500-gran-reserva3.png",
+    "price": 9000
+  } 
+]

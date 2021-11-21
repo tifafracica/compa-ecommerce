@@ -13,17 +13,16 @@ const ItemCount = ({stock, initial, onAdd}) => {
     }, [initial]);
 
 
-    const noStock = (param1, param2) => {
-        const result = param1 === param2 || param1 === 0? true : false;
-        return result;
+    const noStock = () => {
+      return stock === count || stock === 0;
     };
-
+    
     const increment = () => {
-        setCount(count + 1); 
+      setCount((prev) => prev + 1);
     };
-
+    
     const decrement = () => {
-        setCount(count - 1); 
+      setCount((prev) => prev - 1);
     };
 
 
@@ -57,7 +56,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
                         fontSize: 30 
                     }}
                     onClick={decrement}
-                    disabled={count === 1 || stock === 0 ? true : false}
+                    disabled={count === 1 || stock === 0}
                     >
                         -
                     </Button>
@@ -67,7 +66,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
                         fontSize: 20 
                     }}
                     onClick={increment}
-                    disabled={noStock(stock, count)}
+                    disabled={noStock()}
                     >
                         +
                     </Button>
@@ -79,8 +78,8 @@ const ItemCount = ({stock, initial, onAdd}) => {
                 width: 300,
                 mt: 2
             }}
-            disabled={stock === 0 ? true : false}
-            onClick={() => {onAdd(count, item)}}
+            disabled={stock === 0}
+            onClick={onAdd(count, item)}
             >
                 {stock === 0 ? 'No hay Stock' : 'Agregar al carrito'}
             </Button>
