@@ -2,7 +2,9 @@ import { Divider, IconButton, List, ListItem, ListItemText, SwipeableDrawer } fr
 import { styled, useTheme } from '@mui/material/styles';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { useState } from "react";
+import { Link } from "react-router-dom";
+import LinkStyles from '../../../global.module.css'
+
 
 const iOS =
 typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -22,21 +24,25 @@ function LeftMenu({open, onOpen, onClose}) {
 
     const theme = useTheme();
 
-    const categoriesObj = [
+    const categories = [
         {
             id: 1,
-            name: 'Tequeños'
+            name: 'Tequeños Crudos'
         },
         {
             id: 2,
-            name: 'Queso Venezolano'
+            name: 'Tequeños Precocidos'
         },
         {
             id: 3,
-            name: 'Ron Venezolano'
+            name: 'Quesos'
+        },
+        {
+            id: 4,
+            name: 'Rones Venezolanos'
         },
     ]
-    const [categories, changeCategories] = useState(categoriesObj);
+    
 
     return ( 
         <SwipeableDrawer
@@ -66,9 +72,11 @@ function LeftMenu({open, onOpen, onClose}) {
             <Divider sx={{borderColor: 'rgba(255,255,255,0.2)'}}/>
             <List>
                 {categories.map(({id, name}) => (
-                    <ListItem button key={id}>
-                        <ListItemText primary={name} />
-                    </ListItem>
+                    <Link to={`/category/${id}`} className={`${LinkStyles.noUnderline}`} key={id}>
+                        <ListItem button key={id} sx={{color: "white"}}>
+                            <ListItemText primary={name} />
+                        </ListItem>
+                    </Link>
                 ))}
             </List>
         </SwipeableDrawer>

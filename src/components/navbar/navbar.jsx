@@ -11,7 +11,8 @@ import CartWidget from './cartWidget/cartWidget';
 import LeftMenu from './leftMenu/leftMenu';
 import Button from '@mui/material/Button';
 import MenuIcon from '@mui/icons-material/Menu';
-
+import { Link } from 'react-router-dom';
+import NavbarStyles from '../../global.module.css'
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -81,14 +82,16 @@ const Navbar = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
-          >
-            Compa Pedidos
-          </Typography>
+          <Link to='/' className={`${NavbarStyles.noUnderlineNavbar}`}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: 'none', sm: 'block' } }}
+            >
+              Compa Pedidos
+            </Typography>
+          </Link>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />

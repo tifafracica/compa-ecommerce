@@ -1,0 +1,10 @@
+.noUnderlineNavbar{
+    text-decoration: none !important;
+    color: white !important;
+}
+.noUnderline{
+    text-decoration: none !important;
+}
+.black {
+    color: black;
+}

@@ -5,13 +5,11 @@ import { Button } from '@mui/material';
 
 const ItemCount = ({stock, initial, onAdd}) => {
     const [count, setCount] = useState(initial);
-    const [item, setItem] = useState('Docena de tequeños')
     
     // these useEffects make an update when the props initial changes
     useEffect(() => {
         setCount(initial);
     }, [initial]);
-
 
     const noStock = () => {
       return stock === count || stock === 0;
@@ -25,27 +23,22 @@ const ItemCount = ({stock, initial, onAdd}) => {
       setCount((prev) => prev - 1);
     };
 
-
     return(
-        <React.Fragment>
+        <Box sx={{width: 300}}>
             <Box
                 sx={{
                     width: 300,
-                    height: 110,
                     backgroundColor: '#ECE9E8',
                     borderRadius: 1,
-                    mx: "auto"
+                    p: 1 
                 }}
             >
-                <p className="item-text-counter">{item} Stock = {stock}</p>
                 <Box 
                 sx={{
-                    width: 250,
                     height: 50,
                     backgroundColor: '#ffffff',
                     borderRadius: 1,
                     mx: "auto",
-                    mb: 3,
                     display: 'flex',
                     flexDirection: 'row',
                     justifyContent: 'space-between'
@@ -60,7 +53,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
                     >
                         -
                     </Button>
-                    <p>{count}</p>
+                    <p>{ count }</p>
                     <Button variant="text"
                     sx={{
                         fontSize: 20 
@@ -75,15 +68,15 @@ const ItemCount = ({stock, initial, onAdd}) => {
             </Box>
             <Button variant="outlined"
             sx={{
-                width: 300,
+                width: 315,
                 mt: 2
             }}
             disabled={stock === 0}
-            onClick={onAdd(count, item)}
+            onClick={onAdd(count)}
             >
                 {stock === 0 ? 'No hay Stock' : 'Agregar al carrito'}
             </Button>
-        </React.Fragment>
+        </Box>
     )
 }
 
