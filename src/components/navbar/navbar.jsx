@@ -12,7 +12,9 @@ import LeftMenu from './leftMenu/leftMenu';
 import Button from '@mui/material/Button';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
-import NavbarStyles from '../../global.module.css'
+import NavbarStyles from '../../global.module.css';
+import { useCart } from "../../contexts/cartContext";
+
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -55,8 +57,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Navbar = () => {
-    
   const [openLeftMenu, changeOpenLeftMenu] = React.useState(false);
+  const { cart } = useCart();
 
   const handleSidebarOpen = () => {
     changeOpenLeftMenu(true);
@@ -66,7 +68,6 @@ const Navbar = () => {
     changeOpenLeftMenu(false);
   };
   
- 
   return (
     <Box sx={{ flexGrow: 1 }}>
     
@@ -103,7 +104,7 @@ const Navbar = () => {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Button color="inherit">Login</Button>
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>  
+          <Box sx={{ display: { xs: 'none', md: 'flex' } }} className={cart.length === 0 ? `${NavbarStyles.none}` : `${NavbarStyles.show}`}>  
             <CartWidget/>
           </Box>
         </Toolbar>

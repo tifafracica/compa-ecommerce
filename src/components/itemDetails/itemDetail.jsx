@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import ItemCount from '../itemCount.js/itemCount';
 import Button from '@mui/material/Button';
 import DetailStyles from './itemDetail.module.css';
+import { useCart } from '../../contexts/cartContext';
 
 
 const theme = createTheme({
@@ -24,6 +25,7 @@ const theme = createTheme({
 });
 
 const ItemDetail = ({ item }) => {
+  const { addItem } = useCart();
   const [addButton, setAddButton] = useState(false);
   const [addCount, setAddCount] = useState();
  
@@ -48,7 +50,13 @@ const ItemDetail = ({ item }) => {
           <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
           <Link to="/cart" 	sx={{ display: 'none' }} style={{ textDecoration: 'none' }}>
             <p className={ addButton ? `${DetailStyles.showbutton}` : `${DetailStyles.nobutton}`}> Vas a comprar { addCount } { item.productName } </p>
-            <Button variant="contained" sx={{ width: 315}} className={ addButton ? `${DetailStyles.showbutton}` : `${DetailStyles.nobutton}`}>Terminar mi compra</Button>
+            <Button variant="contained" sx={{ width: 315}} 
+            className={ addButton ? `${DetailStyles.showbutton}` : `${DetailStyles.nobutton}`} 
+            onClick={() => {
+              addItem(item, addCount)
+            }}>
+              Comprar
+            </Button>
           </Link>
         </Grid>
       </Grid>

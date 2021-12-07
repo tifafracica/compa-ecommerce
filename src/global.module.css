@@ -8,3 +8,9 @@
 .black {
     color: black;
 }
+.none {
+    display: none;
+}
+.show {
+    display: flex;
+}

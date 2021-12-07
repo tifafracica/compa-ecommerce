@@ -1,0 +1,7 @@
+.totalPriceBox{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column !important;
+  justify-content: space-around;
+  align-items: flex-end;
+}

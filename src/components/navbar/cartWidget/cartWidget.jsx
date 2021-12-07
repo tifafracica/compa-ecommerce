@@ -1,8 +1,11 @@
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { IconButton } from '@mui/material';
 import Badge from '@mui/material/Badge';
+import { useCart } from "../../../contexts/cartContext";
 
 const CartWidget = () => {
+    const { cart } = useCart();
+
     return ( 
         <IconButton
             size="large"
@@ -11,7 +14,7 @@ const CartWidget = () => {
             aria-label="you have 6 items"
             sx={{ ml: 2 }}
         >
-            <Badge badgeContent={6} color="secondary">
+            <Badge badgeContent={cart.reduce((accum, item)=> accum + item.quantity, 0)} color="secondary">
                 <ShoppingCartIcon />
             </Badge>
         </IconButton>

@@ -5,6 +5,7 @@ import ItemListContainer from "./components/catergories/itemListContainer";
 import ItemDetailsContainer from './components/itemDetails/itemDetailsContainer';
 import Cart from './components/cart/cart';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { CartProvider } from './contexts/cartContext';
 
 const theme = createTheme({ 
   palette: {
@@ -20,15 +21,17 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<ItemListContainer />} />
-          <Route path="/category/:categoryID" element={<ItemListContainer />} />
-          <Route path="/item/:itemID" element={<ItemDetailsContainer />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
-      </div>
+      <CartProvider>
+        <div className="App">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<ItemListContainer />} />
+            <Route path="/category/:categoryID" element={<ItemListContainer />} />
+            <Route path="/item/:itemID" element={<ItemDetailsContainer />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </div>
+      </CartProvider>
     </ThemeProvider>
   );
 }
