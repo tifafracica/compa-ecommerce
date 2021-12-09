@@ -4,10 +4,11 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Link } from "react-router-dom";
 import LinkStyles from '../../../global.module.css'
+import { useState, useEffect } from "react";
+import { getCategories } from "../../services/apiCall";
 
 
-const iOS =
-typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
+const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 const drawerWidth = 240;
 
@@ -21,28 +22,17 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   }));
 
 function LeftMenu({open, onOpen, onClose}) {
+    const [categories, setCategories] = useState()
 
     const theme = useTheme();
 
-    const categories = [
-        {
-            id: 1,
-            name: 'Tequeños Crudos'
-        },
-        {
-            id: 2,
-            name: 'Tequeños Precocidos'
-        },
-        {
-            id: 3,
-            name: 'Quesos'
-        },
-        {
-            id: 4,
-            name: 'Rones Venezolanos'
-        },
-    ]
-    
+    useEffect(() => {
+        async function fetchData() {
+          const response = await getCategories();
+          setCategories(response); 
+        }
+        fetchData()
+      }, []);
 
     return ( 
         <SwipeableDrawer
@@ -71,8 +61,8 @@ function LeftMenu({open, onOpen, onClose}) {
             </DrawerHeader>
             <Divider sx={{borderColor: 'rgba(255,255,255,0.2)'}}/>
             <List>
-                {categories.map(({id, name}) => (
-                    <Link to={`/category/${id}`} className={`${LinkStyles.noUnderline}`} key={id}>
+                {categories && categories.map(({id, name}) => (
+                    <Link to={`/category/${id}`} onClick={onClose} className={`${LinkStyles.noUnderline}`} key={id}>
                         <ListItem button key={id} sx={{color: "white"}}>
                             <ListItemText primary={name} />
                         </ListItem>

@@ -30,6 +30,22 @@ const theme = createTheme({
 
 export default function Cart() {
   const { cart, removeItem, clear } = useCart();
+  const totalPrice = cart.reduce((total, item)=>total+(item.item.price * item.quantity),0);
+
+  const handleOrder = () => {
+   
+
+    const order = {
+      buyer: {
+        name: "Tifa Fracica",
+        email: "tifafracica@gmail.com",
+        phone: "1109876543"
+      },
+      items: cart,
+      total: totalPrice
+    };
+    console.log(order)
+  }
   
   const getCartItems = cart.map((element) => {
     return <List sx={{ width: '100%', bgcolor: 'background.paper' }} key={element.item.id}>
@@ -92,13 +108,19 @@ export default function Cart() {
             </Grid>
             <Grid item xs={5} className={`${CartStyles.totalPriceBox}`}>
               <Typography variant='price'>
-                Total a pagar: ${cart.reduce((total, item)=>total+(item.item.price * item.quantity),0)}
+                Total a pagar: ${totalPrice}
               </Typography>
               <Button variant="contained" sx={{ width: 200}} 
                 onClick={() => {
                   clear()
                 }}>
                   Limpiar carrito
+            </Button>
+            <Button variant="contained" sx={{ width: 200}} 
+                onClick={()=>{
+                  handleOrder()
+                }}>
+                  Terminar Compra
             </Button>
             </Grid>
           </Grid>

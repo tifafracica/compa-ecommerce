@@ -8,7 +8,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-const Item = ({cardData}) => {
+const Item = ({ cardData }) => {
+  
   return (  
     <Card sx={{ maxWidth: 345 }}>
     <Link to={`/item/${cardData.id}`} className={`${LinkStyles.noUnderline} ${LinkStyles.black}`}>

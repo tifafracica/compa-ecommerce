@@ -13,9 +13,10 @@ const ItemListContainer = props => {
   
   useEffect(() => {
     async function fetchData() {
-      const response = await getItems(categoryID);
+      const id = categoryID * 1
+      const response = await getItems(id);
       setProducts(response);
-      setLoading(false);
+      setLoading(false);  
     }
     fetchData()
   }, [categoryID]);

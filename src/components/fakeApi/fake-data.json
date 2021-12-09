@@ -1,6 +1,6 @@
-[
+{
+  "items": [
   {
-    "id": 0,
     "productName": "Tequeños de Queso",
     "description": "Docena de tequeños venezolanos congelados rellenos de queso llanero. listos para freír.",
     "category": "Tequeños Crudos",
@@ -9,7 +9,6 @@
     "price": 350
   },
   {
-    "id": 1,
     "productName": "Tequeños de Queso y Panceta",
     "description": "Docena de tequeños venezolanos congelados rellenos de queso llanero y Panceta, listos para freír.",
     "category": "Tequeños Crudos",
@@ -18,7 +17,6 @@
     "price": 350
   },
   {
-    "id": 2,
     "productName": "Tequeños de Queso y Plátano maduro",
     "description": "Docena de tequeños venezolanos congelados rellenos de queso llanero y plátano maduro, listos para freír.",
     "category": "Tequeños Crudos",
@@ -27,7 +25,6 @@
     "price": 350
   },
   {
-    "id": 3,
     "productName": "Tequeños de Queso",
     "description": "Docena de tequeños venezolanos precocido rellenos de queso llanero, listos para freír o hornear.",
     "category": "Tequeños Precocidos",
@@ -36,7 +33,6 @@
     "price": 380
   },
   {
-    "id": 4,
     "productName": "Chiquibaby",
     "description": "24 unid de tequeños baby rellenos de queso llanero, listos para freír.",
     "category": "Tequeños Crudos",
@@ -45,7 +41,6 @@
     "price": 345
   },
   {
-    "id": 5,
     "productName": "Tequeyoyos Zuliano",
     "description": "5 unid de tequeyoyos rellenos de queso llanero, plátano maduro y jamón cocido, listos para freír.",
     "category": "Tequeños Crudos",
@@ -54,7 +49,6 @@
     "price": 380
   },
   {
-    "id": 6,
     "productName": "Queso llanero",
     "description": "1 kg de queso blanco llanero",
     "category": "Quesos",
@@ -63,7 +57,6 @@
     "price": 550
   },
   {
-    "id": 7,
     "productName": "Ron Diplomatico Reserva",
     "description": "700ml de Ron Reserva Exclusiva es un elegante y complejo ron de degustación. La unión de un cuerpo único con un excelente balance, lo ha convertido en una referencia para los amantes y conocedores de ron en todo el mundo. Aromas deliciosos como la piel de naranja, jarabe de maple y regaliz pueden ser percibidos. En el paladar es dulce, con notas de caramelo de azúcar y un acabado atractivo y duradero.",
     "category": "Rones Venezolanos",
@@ -72,7 +65,6 @@
     "price": 10000
   },
   {
-    "id": 8,
     "productName": "Ron Cacique 500",
     "description": "750ml de Ron que conmemora los 500 años del descubrimiento de América. Se caracteriza por ser un ron estructurado que exalta el olor de fruta madura, madera y vainilla. Es una selección de los mejores rones extra añejados en barricas de roble blanco. Su profundo color ámbar se refleja es su característica botella oscura. Perfecto para mezclarlo o tomarlo en las rocas.",
     "category": "Rones Venezolanos",
@@ -80,4 +72,4 @@
     "pictureUrl": "https://marianomadrueno.es/wp-content/uploads/2013/06/cacique-ron-500-gran-reserva3.png",
     "price": 9000
   } 
-]
+]}

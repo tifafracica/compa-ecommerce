@@ -1,29 +1,40 @@
-import fakeData from '../fakeApi/fake-data.json';
-
-// Delay Function
-const delay= ms => new Promise(resolve => setTimeout(resolve, ms));
+import { doc, getDoc, getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
 
 export async function getItems(id) {
-  let data;
-  try {
-    if (id === undefined) return data = fakeData;
-    const newId = parseInt(id);
-    data = fakeData.filter((el) => el.categoryId === newId);
-    await delay(2000);
-    return data;
-  } catch (error) {
-    throw new Error(`something happen ${error}`);
+  let collectionData;
+  const db = getFirestore();
+  const itemCollection = collection(db, "items");
+  if (id){
+    const q = query(itemCollection, where('categoryId', '==', id));
+    collectionData = getDocs(q).then((snapshot) => {
+      return Promise.all(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+  })
+  }else {
+    collectionData = getDocs(itemCollection).then((snapshot) => {
+      return Promise.all(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    })
   }
+  return collectionData;
+}
+
+export async function getCategories() {
+  const db = getFirestore();
+  const itemCollection = collection(db, "categories");
+  const categories = getDocs(itemCollection).then((snapshot) => {
+    return Promise.all(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+  })
+  return categories;
 }
 
 export async function getItem(id) {
-  try {
-    const newId = parseInt(id)
-    const data = fakeData;
-    const item = data.filter((el) => el.id === newId)[0];
-    await delay(2000)
-    return item
-  } catch (error) {
-    throw new Error(`something happen ${error}`);
-  }
+  let item
+  const db = getFirestore();
+  const itemRef = doc(db, "items", id);
+
+  item = getDoc(itemRef).then((snapshot) => {
+    if(snapshot.exists()){
+      return {id: snapshot.id, ...snapshot.data()}
+    }
+  })
+  return item
 }

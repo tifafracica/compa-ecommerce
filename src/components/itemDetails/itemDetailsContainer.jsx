@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import CircularProgress from '@mui/material/CircularProgress';
 
 const ItemDetailsContainer = props => {
-  const [item, setItem] = useState();
+  const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const { itemID } = useParams();
   
@@ -14,7 +14,7 @@ const ItemDetailsContainer = props => {
     async function fetchData() {
       const response = await getItem(itemID);
       setItem(response);
-      setLoading(false);
+      setLoading(false);  
     }
     fetchData()
   }, [itemID]);
