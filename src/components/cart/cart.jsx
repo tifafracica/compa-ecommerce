@@ -3,21 +3,25 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
+import TextField from '@material-ui/core/TextField';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import CartStyles from './cart.module.css';
 import { Link } from "react-router-dom";
+import { useForm, Controller } from 'react-hook-form';
+import cartStyles from './cart.module.css'
+import { addOrder } from "../services/apiCall";
 
 const theme = createTheme({
   typography: {
     price: {
-        fontSize: 40,
+        fontSize: 20,
         fontWeight: 800,
         color: '#e53935'
     },
@@ -32,23 +36,19 @@ export default function Cart() {
   const { cart, removeItem, clear } = useCart();
   const totalPrice = cart.reduce((total, item)=>total+(item.item.price * item.quantity),0);
 
-  const handleOrder = () => {
-   
+  const { control, handleSubmit } = useForm();
 
+  const onSubmit = data => {
     const order = {
-      buyer: {
-        name: "Tifa Fracica",
-        email: "tifafracica@gmail.com",
-        phone: "1109876543"
-      },
+      buyer: data,
       items: cart,
       total: totalPrice
     };
-    console.log(order)
-  }
-  
+    addOrder(order);
+  };
+
   const getCartItems = cart.map((element) => {
-    return <List sx={{ width: '100%', bgcolor: 'background.paper' }} key={element.item.id}>
+    return <List sx={{ bgcolor: 'background.paper' }} key={element.item.id}>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
           <Avatar alt={element.item.productName} src={element.item.pictureUrl} />
@@ -104,24 +104,79 @@ export default function Cart() {
         <Box sx={{ flexGrow: 1, padding: 10 }} >
           <Grid container spacing={2}>
             <Grid item xs={7}>
-              {getCartItems}
+              <Card sx={{padding: 5}}>
+                {getCartItems}
+                <Box sx={{mt: 8}}>
+                  <Typography variant='price'>
+                    Total a pagar: ${totalPrice}
+                  </Typography>
+                </Box>
+              </Card>
             </Grid>
-            <Grid item xs={5} className={`${CartStyles.totalPriceBox}`}>
-              <Typography variant='price'>
-                Total a pagar: ${totalPrice}
-              </Typography>
-              <Button variant="contained" sx={{ width: 200}} 
-                onClick={() => {
-                  clear()
-                }}>
-                  Limpiar carrito
-            </Button>
-            <Button variant="contained" sx={{ width: 200}} 
-                onClick={()=>{
-                  handleOrder()
-                }}>
-                  Terminar Compra
-            </Button>
+            <Grid item xs={5} >
+              <Card sx={{padding: 5}}>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <Box sx={{marginBottom: 3}}>
+                    <Controller name="name" control={control} defaultValue="" 
+                    render={({ field: { onChange, value }, fieldState: { error } }) => (
+                      <TextField
+                        className={`${cartStyles.width}`}
+                        label="Nombre y Apellido"
+                        variant="filled"
+                        value={value}
+                        onChange={onChange}
+                        error={!!error}
+                        helperText={error ? error.message : null}
+                      />)}
+                      rules={{ required: 'Por favor llenar el campo' }}
+                    />
+                  </Box>
+
+                  <Box sx={{marginBottom: 3}}>
+                    <Controller name="email" control={control} defaultValue="" 
+                    render={({ field: { onChange, value }, fieldState: { error } }) => (
+                      <TextField
+                        className={`${cartStyles.width}`}
+                        label="Email"
+                        variant="filled"
+                        value={value}
+                        onChange={onChange}
+                        error={!!error}
+                        helperText={error ? error.message : null}
+                        type="email"
+                      />)}
+                      rules={{ required: 'Por favor llenar el campo' }}
+                    />
+                  </Box>
+
+                  <Box sx={{marginBottom: 3}}>
+                    <Controller name="phone" control={control} defaultValue="" 
+                    render={({ field: { onChange, value }, fieldState: { error } }) => (
+                      <TextField
+                        className={`${cartStyles.width}`}
+                        label="Telefono"
+                        variant="filled"
+                        value={value}
+                        onChange={onChange}
+                        error={!!error}
+                        helperText={error ? error.message : null}
+                        type="number"
+                      />)}
+                      rules={{ required: 'Por favor llenar el campo' }}
+                    />   
+                  </Box>
+
+                  <Box sx={{display: 'flex;'}}>
+                    <Button variant="contained" sx={{ width: 200, marginRight: 5}} 
+                      onClick={() => {
+                        clear()
+                      }}>
+                        Limpiar carrito
+                    </Button>
+                    <Button type="submit"variant="contained" sx={{ width: 200}}>Terminar Compra</Button>
+                  </Box>
+                </form>
+              </Card>
             </Grid>
           </Grid>
         </Box>
