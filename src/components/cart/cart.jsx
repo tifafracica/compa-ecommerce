@@ -109,7 +109,7 @@ export default function Cart() {
             <Grid item xs={7}>
               <Card sx={{padding: 5}}>
                 {getCartItems}
-                <Box sx={{mt: 8}}>
+                <Box sx={{mt: 8}}> 
                   <Typography variant='price'>
                     Total a pagar: ${totalPrice}
                   </Typography>
