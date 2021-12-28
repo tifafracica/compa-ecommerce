@@ -13,7 +13,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm, Controller } from 'react-hook-form';
 import cartStyles from './cart.module.css'
 import { addOrder } from "../services/apiCall";
@@ -37,6 +37,7 @@ export default function Cart() {
   const totalPrice = cart.reduce((total, item)=>total+(item.item.price * item.quantity),0);
 
   const { control, handleSubmit } = useForm();
+  const navigate = useNavigate();
 
   const onSubmit = data => {
     const order = {
@@ -45,6 +46,8 @@ export default function Cart() {
       total: totalPrice
     };
     addOrder(order);
+    navigate("/");
+    clear();
   };
 
   const getCartItems = cart.map((element) => {
