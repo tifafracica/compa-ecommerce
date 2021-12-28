@@ -6,7 +6,6 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CartWidget from './cartWidget/cartWidget';
 import LeftMenu from './leftMenu/leftMenu';
-import Button from '@mui/material/Button';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import NavbarStyles from '../../global.module.css';
