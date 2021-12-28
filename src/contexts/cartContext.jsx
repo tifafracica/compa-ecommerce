@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import swal from 'sweetalert';
 
 const CartContext = createContext();
 
@@ -6,8 +7,6 @@ export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-  
-  console.log('aca Pueden observar los cambios del carrito', cart)
   
   const isInCart = (id) => {
     return cart.some((el) => el.item.id === id)
@@ -35,6 +34,11 @@ export const CartProvider = ({ children }) => {
     let hardCopy = [...cart];
     hardCopy = hardCopy.filter((cartItem) => cartItem.item.id !== id);
     setCart(hardCopy);
+    swal({
+      title: "Item Eliminado!",
+      icon: "success",
+      button: "Seguir comprando!",
+    });
   }
 
   const clear = () =>{

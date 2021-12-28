@@ -84,15 +84,15 @@ export default function Cart() {
     <>
     { cart.length === 0 ?
       <Box sx={{ minWidth: "100%",
-       minHeight: "100vh",
-       display: "flex",
-       flexDirection: "column",
-       alignItems: "center",
-       justifyContent: "center"
-     }}>
-       <Typography sx={{marginBottom: 4}}>
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center"
+      }}>
+        <Typography sx={{marginBottom: 4}}>
           No hay Items
-       </Typography>
+        </Typography>
         <Link to="/" style={{ textDecoration: 'none' }}>
           <Button variant="contained" sx={{ width: 315}}>
             Volver al Home

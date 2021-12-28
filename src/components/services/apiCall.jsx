@@ -1,4 +1,6 @@
 import { doc, getDoc, getFirestore, collection, getDocs, query, where, addDoc, writeBatch } from 'firebase/firestore';
+import swal from 'sweetalert';
+
 
 export async function getItems(id) {
   let collectionData;
@@ -44,17 +46,14 @@ export async function addOrder(order){
   
   const ordersColletion = collection(db, "orders");
 
-  //the alert message is temporay
-  addDoc(ordersColletion, order).then(({ id }) => alert(`Gracias por tu compra! tu numero de orden es ${id}`))
+  addDoc(ordersColletion, order).then(({ id }) => swal("Gracias por tu compra!", `tu numero de orden es ${id}`, "success"))
  
   const batch = writeBatch(db);
 
   order.items.forEach((obj) => {
-    console.log(obj)
     const itemRef = doc(db, "items", obj.item.id);
     batch.update(itemRef, {stock: obj.item.stock - obj.quantity });
   });
   batch.commit();
   
 }
-
